@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 
-const articlesSchema = mongoose.Schema(
+const articlesSchema = new mongoose.Schema(
   {
-    imageUrl: {
+    image: {
       type: String,
-      required: true,
     },
     title: {
       type: String,

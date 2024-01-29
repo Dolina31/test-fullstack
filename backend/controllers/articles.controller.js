@@ -7,7 +7,7 @@ module.exports.getArticles = async (req, res) => {
 
 module.exports.setArticles = async (req, res) => {
   const article = await ArticleModel.create({
-    imageUrl: req.body.imageUrl,
+    image: req.body.image,
     title: req.body.title,
     description: req.body.description,
   });
