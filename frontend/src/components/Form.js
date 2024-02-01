@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { newArticle } from "../features/articlesSlice";
+import {
+  setNewArticle,
+  newArticle,
+  setArticles,
+} from "../features/articlesSlice";
 
 const Form = () => {
   const [title, setTitle] = useState("");
@@ -13,25 +17,28 @@ const Form = () => {
     e.preventDefault();
 
     const formData = { title, image, description };
-    const addNewArticle = await dispatch(newArticle(formData));
+    const newArticleData = await dispatch(newArticle(formData));
+
+    // Dispatchez l'action setNewArticle avec les données du nouvel article
+    dispatch(setNewArticle(newArticleData));
   };
 
   return (
     <div>
-      <h1>Ajouter un nouvel article</h1>
-      <form>
-        <div className="input_wrapper">
-          <label htmlFor="title">Titre: </label>
+      <form className="my-5">
+        <div className="input_wrapper m-3 ml-5 flex flex-col gap-1 font-inria">
+          <label htmlFor="title">Titre :</label>
           <input
             type="text"
-            placeholder="Titre"
+            placeholder="Nouvel article !"
             id="title"
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className="w-4/5"
           />
         </div>
-        <div className="input_wrapper">
+        <div className="input_wrapper m-3 ml-5 flex flex-col gap-1 font-inria">
           <label htmlFor="image">ImageUrl: </label>
           <input
             type="text"
@@ -39,23 +46,30 @@ const Form = () => {
             id="image"
             name="image"
             onChange={(e) => setImage(e.target.value)}
+            className="w-4/5"
           />
         </div>
-        <div className="input_wrapper">
+        <div className="input_wrapper m-3 ml-5 flex flex-col gap-1 font-inria">
           <label htmlFor="description">Description: </label>
           <input
             type="text"
-            placeholder="description"
+            placeholder="Voici mon nouvel article"
             id="description"
             name="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            className="w-4/5"
           />
         </div>
-
-        <button type="submit" onClick={handleSubmit}>
-          Valider
-        </button>
+        <div className="confirm-button w-full flex justify-center">
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="bg-white w-2/5 mt-5 font-inria"
+          >
+            Valider
+          </button>
+        </div>
       </form>
     </div>
   );

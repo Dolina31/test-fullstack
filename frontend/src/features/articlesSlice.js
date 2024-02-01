@@ -21,6 +21,9 @@ const articlesSlice = createSlice({
     setDescription: (state, action) => {
       state.description = action.payload;
     },
+    setNewArticle: (state, action) => {
+      state.articles.push(action.payload); // Ajoute le nouvel article à la liste existante
+    },
   },
 });
 
@@ -68,6 +71,11 @@ export const newArticle = createAsyncThunk(
   }
 );
 
-export const { setImage, setTitle, setDescription, setArticles } =
-  articlesSlice.actions;
+export const {
+  setImage,
+  setTitle,
+  setDescription,
+  setArticles,
+  setNewArticle,
+} = articlesSlice.actions;
 export default articlesSlice.reducer;

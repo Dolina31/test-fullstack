@@ -1,20 +1,24 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Form from "../components/Form";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import ArticleCard from "../components/ArticleCard";
 
 const Home = () => {
-  const articlesData = useSelector((state) => state.articles.articles);
-
   return (
     <>
-      {articlesData.map((article) => (
-        <div key={article._id}>
-          <h2>{article.title}</h2>
-          <img src={article.image} />
-          <p>{article.description}</p>
-          {/* <p>{article.createdAt}</p> */}
-        </div>
-      ))}
+      <header>
+        <Navbar />
+        <Hero />
+      </header>
+      <div>
+        <h2 className="font-inria text-xl mt-5 mb-2 ml-5">ARTICLES :</h2>
+        <ArticleCard />
+      </div>
+      <h2 className="font-inria text-xl mt-5 mb-2 ml-5">
+        AJOUTER UN NOUVEL ARTICLE
+      </h2>
       <Form />
     </>
   );
