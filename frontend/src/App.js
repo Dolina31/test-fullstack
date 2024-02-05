@@ -11,6 +11,7 @@ function App() {
     dispatch(getArticles()).then((resultAction) => {
       const articles = resultAction.payload;
 
+      console.log("test");
       dispatch(setArticles(articles));
     });
   });
