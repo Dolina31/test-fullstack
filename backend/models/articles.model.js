@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const articlesSchema = new mongoose.Schema(
   {
-    image: {
+    imageUrl: {
       type: String,
     },
     title: {
